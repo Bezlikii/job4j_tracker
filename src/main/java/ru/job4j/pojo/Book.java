@@ -27,11 +27,14 @@ public class Book {
         this.numbersOfPages = numbersOfPages;
     }
 
-    @SuppressWarnings("checkstyle:NeedBraces")
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Book book = (Book) o;
         return numbersOfPages == book.numbersOfPages && Objects.equals(name, book.name);
     }
