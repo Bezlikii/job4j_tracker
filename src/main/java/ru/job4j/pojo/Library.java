@@ -13,7 +13,7 @@ public class Library {
             System.out.println("Книга: " + book.getName() + ", Страниц: " + book.getNumbersOfPages());
         }
 
-        System.out.println("\nЗамена книги с индексом 0 на 3.");
+        System.out.println(System.lineSeparator() + "Замена книги с индексом 0 на 3.");
         Book temp = listOfBooks[0];
         listOfBooks[0] = listOfBooks[3];
         listOfBooks[3] = temp;
@@ -21,8 +21,8 @@ public class Library {
         System.out.println("Книга под индексом 3: " + listOfBooks[3].getName());
 
         for (Book book : listOfBooks) {
-            if (book.getName().equals("Clean code")) {
-                System.out.println("\nКнига нашлась: " + book.getName() + ", Страниц: " + book.getNumbersOfPages());
+            if ("Clean code".equals(book.getName())) {
+                System.out.println(System.lineSeparator() + "Книга нашлась: " + book.getName() + ", Страниц: " + book.getNumbersOfPages());
             }
         }
 
