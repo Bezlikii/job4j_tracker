@@ -40,9 +40,9 @@ public class Tracker {
         if (checkIndex) {
             item.setId(id);
             items[index] = item;
-            return true;
+            return checkIndex;
         }
-        return false;
+        return checkIndex;
     }
 
     public void delete(int id) {
