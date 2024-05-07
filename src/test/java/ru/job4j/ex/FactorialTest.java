@@ -7,10 +7,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class FactorialTest {
 
-    Factorial factorial = new Factorial();
-
     @Test
     public void whenIsInterrupt() {
+        Factorial factorial = new Factorial();
         IllegalArgumentException exception = assertThrows(
                 IllegalArgumentException.class,
                 () -> factorial.calc(-1)
@@ -20,6 +19,7 @@ public class FactorialTest {
 
     @Test
     public void whenIsNotInterrupt() {
+        Factorial factorial = new Factorial();
         int expected = 6;
         int result = factorial.calc(3);
         assertThat(result).isEqualTo(expected);
