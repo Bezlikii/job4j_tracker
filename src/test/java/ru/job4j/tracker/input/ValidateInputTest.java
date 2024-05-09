@@ -38,10 +38,15 @@ class ValidateInputTest {
         );
         ValidateInput input = new ValidateInput(output, in);
         int[] expected = {3, 4, 2};
-        for (int j : expected) {
-            int selected = input.askInt("Enter menu:");
-            assertThat(selected).isEqualTo(j);
-        }
+
+        int selected = input.askInt("Enter menu:");
+        assertThat(selected).isEqualTo(expected[0]);
+
+        int selected2 = input.askInt("Enter menu:");
+        assertThat(selected2).isEqualTo(expected[1]);
+
+        int selected3 = input.askInt("Enter menu:");
+        assertThat(selected3).isEqualTo(expected[2]);
     }
 
     @Test
