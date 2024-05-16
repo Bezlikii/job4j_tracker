@@ -5,16 +5,16 @@ public class PasswordValidator {
 
     /**
      * Метод проверят пароль по правилам:
-     *  +1. Если password null, то выбросить исключение "Password can't be null";
-     *  +2. Длина пароля находится в диапазоне [8, 32],
+     *  1. Если password null, то выбросить исключение "Password can't be null";
+     *  2. Длина пароля находится в диапазоне [8, 32],
      *     если нет то "Password should be length [8, 32]";
-     *  +3. Пароль содержит хотя бы один символ в верхнем регистре,
+     *  3. Пароль содержит хотя бы один символ в верхнем регистре,
      *     если нет то "Password should contain at least one uppercase letter");
-     *  +4. Пароль содержит хотя бы один символ в нижнем регистре,
+     *  4. Пароль содержит хотя бы один символ в нижнем регистре,
      *     если нет то "Password should contain at least one lowercase letter";
-     *  +5. Пароль содержит хотя бы одну цифру,
+     *  5. Пароль содержит хотя бы одну цифру,
      *     если нет то"Password should contain at least one figure");
-     *  +6. Пароль содержит хотя бы один спец. символ (не цифра и не буква),
+     *  6. Пароль содержит хотя бы один спец. символ (не цифра и не буква),
      *     если нет то "Password should contain at least one special symbol");
      *  7. Пароль не содержит подстрок без учета регистра: qwerty, 12345, password, admin, user.
      *     Без учета регистра, значит что, например, ни qwerty ни QWERTY ни qwErty и т.п.
@@ -30,21 +30,6 @@ public class PasswordValidator {
         }
         if (password.length() < 8 || password.length() > 32) {
             throw new IllegalArgumentException("Password should be length [8, 32]");
-        }
-
-        String[] forbiddenStrings = new String[] {
-                "qwerty",
-                "12345",
-                "password",
-                "admin",
-                "user"
-        };
-        for (String forbidden : forbiddenStrings) {
-            if (password.toLowerCase().contains(forbidden.toLowerCase())) {
-                throw new IllegalArgumentException(
-                        "Password shouldn't contain substrings: qwerty, 12345, password, admin, user"
-                );
-            }
         }
 
         boolean hasUpCase = false;
@@ -85,6 +70,15 @@ public class PasswordValidator {
                     "Password should contain at least one special symbol"
             );
         }
+
+        for (String forbidden : FORBIDDEN) {
+            if (password.toLowerCase().contains(forbidden.toLowerCase())) {
+                throw new IllegalArgumentException(
+                        "Password shouldn't contain substrings: qwerty, 12345, password, admin, user"
+                );
+            }
+        }
+
         return password;
     }
 }
