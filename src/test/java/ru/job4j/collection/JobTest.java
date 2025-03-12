@@ -26,6 +26,16 @@ public class JobTest {
     }
 
     @Test
+    public void whenComparatorByNameAndPriorityWithEqualNames() {
+        Comparator<Job> cmpDescNameDescPriority = new JobDescByName().thenComparing(new JobDescByPriority());
+        int rsl = cmpDescNameDescPriority.compare(
+                new Job("Fix bug", 1),
+                new Job("Fix bug", 2)
+        );
+        assertThat(rsl).isGreaterThan(0);
+    }
+
+    @Test
     public void whenComparatorDescByName() {
         Comparator<Job> cmpDescName = new JobDescByName();
         int rsl = cmpDescName.compare(
