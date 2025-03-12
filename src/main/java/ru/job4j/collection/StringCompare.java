@@ -1,13 +1,12 @@
 package ru.job4j.collection;
 
 import java.util.Comparator;
-import java.util.Map;
 
 public class StringCompare implements Comparator<String> {
     @Override
     public int compare(String left, String right) {
         int minLength = Math.min(left.length(), right.length());
-        for (int i = 0; i < minLength - 1; i++) {
+        for (int i = 0; i < minLength; i++) {
             char leftChar = left.charAt(i);
             char rightChar = right.charAt(i);
             if (leftChar != rightChar) {
